@@ -1,6 +1,4 @@
-// This code handles servo control via PWM signal with Arduino Uno board inside ArduinoIDE 
-
-
+// This code handles BLDC motor control via PWM signal with Arduino Uno board inside ArduinoIDE 
 #include <Servo.h>
 
 #define NUMMOTORS 1
