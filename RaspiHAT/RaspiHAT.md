@@ -1,0 +1,1 @@
+# Here will be quick documentation of a Power Module project and guide how to use it

@@ -9,6 +9,18 @@ Repozytorium sekcji Dron, gdzie umieszczane jest oprogramowanie do obsługi wszy
 
 -> ArduinoIDE - programowanie urządzeń peryferyjnych dla ArduinoUNO
 
+## Rozwijane projekty, do których oprogramowanie znajduje się w tym repozytorium 
+
+-> VTOL Tilt-Rotor - platforma pionowego startu z niezależnie pochylanymi gondolami zespołu napędowego
+
+-> Power Module - kompaktowy moduł do pomiaru parametrów pracy akumulatora LiPo naszych BSP oraz komunikacji z kontrolerem lotu
+
+-> Beacon - zdalnie sterowanie lotki z paskami LED zmieniającymi kolor z możliwością komunikacji bezprzewodowej po sieci mesh 
+
+-> Raspberry HAT - moduł do integracji urządzeń peryferyjnych z raspberryPI
+
+-> ESP Telemetry - system do komunikacji na odległość pomiędzy kontrolerem lotu FC a stacją kontroli naziemnej GCS przy użyciu protokołu ESP-NOW
+
 ## Urządzenia peryferyjne oprogramowane
 
 ### PlatformIO
@@ -25,7 +37,7 @@ Repozytorium sekcji Dron, gdzie umieszczane jest oprogramowanie do obsługi wszy
 
 ### RaspberryPI
 
-## Urządzenia do oprogramowania
+## Urządzenia peryferyjne do oprogramowania
 
 ### PlatformIO
 
