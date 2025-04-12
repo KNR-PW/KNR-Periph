@@ -1,11 +1,13 @@
 # KNR-Periph
-Repozytorium sekcji Dron, gdzie umieszczane jest oprogramowanie do obsługi wszystkich urządzeń peryferyjnych platform bezzałogowych
+Repozytorium sekcji Dron, gdzie umieszczane jest oprogramowanie do obsługi wszystkich urządzeń peryferyjnych BSP
 
 ## Narzędzia/platformy z których korzystamy do obsługi urządzeń peryferyjnych
 
--> PlatformIO - programowanie STM32, ESP32
+-> PlatformIO - wysokopoziomowe programowanie mikrokontrolerów z rodziny STM32, ESP32 
+
 -> ArduinoIDE - ArduinoUNO
--> Python 3 - programowanie peryferiów na raspberry
+
+-> Python 3 - obsługa peryferiów na RaspberryPI
 
 ## Urządzenia peryferyjne oprogramowane
 
@@ -19,4 +21,7 @@ Repozytorium sekcji Dron, gdzie umieszczane jest oprogramowanie do obsługi wszy
 
 ## Urządzenia do oprogramowania
 -> Silnik BLDC T-Motor sterowany PWM przez ESP32
+
 -> Serwomechanizm o pracy ciągłej ST3215 w PlatformIO
+
+-> Mostek H do napędu silnika DC w PlatformIO/RPi
