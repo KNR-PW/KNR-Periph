@@ -39,6 +39,10 @@ System do komunikacji na odległość pomiędzy kontrolerem lotu FC a stacją ko
 
 -> Adresowanle LED WS2812b
 
+-> Silnik BLDC T-Motor sterowany PWM
+
+-> Serwomechanizm o pracy ciągłej ST3215 
+
 ### ArduinoIDE 
 
 -> Silnik BLDC T-Motor sterowany PWM
@@ -48,10 +52,6 @@ System do komunikacji na odległość pomiędzy kontrolerem lotu FC a stacją ko
 ## Urządzenia peryferyjne do oprogramowania
 
 ### PlatformIO
-
--> Silnik BLDC T-Motor sterowany PWM
-
--> Serwomechanizm o pracy ciągłej ST3215 
 
 -> Mostek H do napędu silnika DC 
 
