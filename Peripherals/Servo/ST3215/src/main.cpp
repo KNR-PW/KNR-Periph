@@ -142,7 +142,7 @@ void loop() {
   //     tog = !tog;
   //   }     
   // }
-  periodicServoControl();
+  // periodicServoControl();
   // sineServoControl();
 }
 

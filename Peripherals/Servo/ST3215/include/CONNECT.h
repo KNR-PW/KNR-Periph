@@ -127,8 +127,8 @@ void activeCtrl(int cmdInput){
 
     case 7:activeSpeed(100);break;
     case 8:activeSpeed(-100);break;
-    case 9:servotoSet += 1;if(servotoSet > 250){servotoSet = 0;}break;
-    case 10:servotoSet -= 1;if(servotoSet < 0){servotoSet = 0;}break;
+    case 9:servotoSet = 1;if(servotoSet > 250){servotoSet = 0;}break;
+    case 10:servotoSet = 1;if(servotoSet < 0){servotoSet = 0;}break;
     case 11:setMiddle(listID[activeNumInList]);break;
     case 12:setMode(listID[activeNumInList], 0);break;
     case 13:setMode(listID[activeNumInList], 3);break;
@@ -140,8 +140,28 @@ void activeCtrl(int cmdInput){
     case 18:DEV_ROLE = 1;break;
     case 19:DEV_ROLE = 2;break;
 
-    case 20:RAINBOW_STATUS = 1;break;
-    case 21:RAINBOW_STATUS = 0;break;
+    case 20:
+      if(ServoType[listID[0]] == 9){
+        st.WritePosEx(listID[activeNumInList], -250, activeServoSpeed, ServoInitACC_ST);
+        // delay(3000); 
+      }
+      else if(ServoType[listID[activeNumInList]] == 5){
+        sc.WritePosEx(listID[activeNumInList], -250, activeServoSpeed, ServoInitACC_SC);
+        // delay(3000);
+      }
+      break;
+
+    case 21:
+      if(ServoType[listID[activeNumInList]] == 9){
+        st.WritePosEx(listID[activeNumInList], 250, activeServoSpeed, ServoInitACC_ST);
+        // delay(3000);
+      }
+      else if(ServoType[listID[activeNumInList]] == 5){
+        sc.WritePosEx(listID[activeNumInList], 250, activeServoSpeed, ServoInitACC_SC);
+        // delay(3000);
+      }
+      break;
+
   }
 }
 

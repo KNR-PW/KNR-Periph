@@ -101,8 +101,8 @@ const char index_html[] PROGMEM = R"rawliteral(
         <label align="center"><button class="button" onclick="setRole(1);">Leader</button></label>
         <label align="center"><button class="button" onclick="setRole(2);">Follower</button></label>
     <p>
-        <label align="center"><button class="button" onclick="toggleCheckbox(1, 20, 0, 0);">RainbowON</button></label>
-        <label align="center"><button class="button" onclick="toggleCheckbox(1, 21, 0, 0);">RainbowOFF</button></label>
+        <label align="center"><button class="button" onclick="toggleCheckbox(1, 20, 0, 0);">Set+90Pos</button></label>
+        <label align="center"><button class="button" onclick="toggleCheckbox(1, 21, 0, 0);">Set-90Pos</button></label>
     <script>
         serialForwardStatus = false;
 

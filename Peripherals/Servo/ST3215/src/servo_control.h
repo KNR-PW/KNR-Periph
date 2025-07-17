@@ -31,10 +31,10 @@ void periodicServoControl() {
     {
 
         // st.WritePosEx(1, -1000, SERVO_SPEED, SERVO_ACC);
-        st.WritePosEx(10, 1000, SERVO_SPEED, SERVO_ACC);
+        st.WritePosEx(SERVO_ID, 1000, SERVO_SPEED, SERVO_ACC);
         delay(3000);
-        // st.WritePosEx(1, -1000, SERVO_SPEED, SERVO_ACC);
-        st.WritePosEx(10, 1000, SERVO_SPEED, SERVO_ACC);
+        st.WritePosEx(SERVO_ID, 1000, -SERVO_SPEED, SERVO_ACC);
+        // st.WritePosEx(10, 1000, SERVO_SPEED, SERVO_ACC);
         delay(3000);
     }
     //   st.WritePosEx(SERVO_ID, 15000, SERVO_SPEED, SERVO_ACC);

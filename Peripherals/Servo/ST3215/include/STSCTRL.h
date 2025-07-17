@@ -54,7 +54,7 @@ bool searchedStatus = false;
 bool searchFinished = false;
 bool searchCmd      = false;
 byte activeNumInList = 0;
-s16 activeServoSpeed = 100;
+s16 activeServoSpeed = 1000;
 byte servotoSet = 0;
 
 // linkageBuffer to save the angle.
@@ -79,7 +79,7 @@ void getFeedBack(byte servoID){
       if(serialFeedback){Serial.println("FeedBack err");}
     }
 
-    // Serial.print("Current position: "); Serial.println(posRead[1]);
+    Serial.print("Current position: "); Serial.println(posRead[1]);
   }
 
 }
