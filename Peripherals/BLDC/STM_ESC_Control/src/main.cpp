@@ -1,12 +1,16 @@
 #include <Arduino.h>
 
 /*   UART TX=PB6, RX=PB7  */
+#define GPS_UART_TX PA9
+#define GPS_UART_RX PA10
+HardwareSerial SerialPom(GPS_UART_RX, GPS_UART_TX);
+
 static constexpr uint8_t ESC1 = PB4;    // TIM3_CH1
 static constexpr uint8_t ESC2 = PB3;    // TIM2_CH2
 static constexpr uint8_t ADC_PIN = PA0;  // ADC input
 
-static constexpr uint16_t MIN_US    = 1000;  // 1 ms
-static constexpr uint16_t MAX_US    = 1800;  // 1.8 ms
+static constexpr uint16_t MIN_US    = 900;  // 1 ms
+static constexpr uint16_t MAX_US    = 1600;  // 1.8 ms
 static constexpr uint16_t PERIOD_US = 20000; // 20 ms → 50 Hz
 static constexpr uint8_t  RES_BITS  = 12;    // 12‐bit PWM resolution
 
@@ -31,7 +35,7 @@ void setup() {
   Serial.begin(115200);
   while (!Serial) {}
 
-  Serial1.begin(9600);
+  SerialPom.begin(9600);
 
   delay(500);
 
@@ -53,11 +57,21 @@ void setup() {
 }
 
 void loop() {
+  if (SerialPom.available()) {
+    String input = SerialPom.readStringUntil('\n');
+    input.trim();
+
+    int percent = input.toInt();
+    Serial.print(input);
+    Serial.print(percent);
+  }
   if (Serial.available()) {
     String input = Serial.readStringUntil('\n');
     input.trim();
 
     int percent = input.toInt();
+    Serial.print(input);
+    Serial.print(percent);
 
     if (percent >= 0 && percent <= 100) {
       uint16_t us = MIN_US + (MAX_US - MIN_US) * (percent / 100.0);
@@ -80,10 +94,10 @@ void loop() {
   if (millis() - lastSendTime >= sendInterval) {
     uint16_t adcVal = analogRead(ADC_PIN);
     float voltage = (adcVal / float(ADC_MAX)) * ADC_REF_VOLTAGE;
+    // String napis = String(voltage);
 
-    Serial1.print("Napiece ADC (PA0): ");
-    Serial1.print(voltage, 3); // 3 miejsca po przecinku
-    Serial1.println(" V");
+    SerialPom.println(voltage,3); // 3 miejsca po przecinku
+
     Serial.print("Napiece ADC (PA0): ");
     Serial.print(voltage, 3); // 3 miejsca po przecinku
     Serial.println(" V");
