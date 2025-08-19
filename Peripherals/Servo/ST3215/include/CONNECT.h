@@ -63,7 +63,10 @@ void activeCtrl(int cmdInput){
   Serial.println(ServoType[listID[activeNumInList]]);
   Serial.println(ServoType[1]);
   Serial.println("---   ---   ---");
-  activeNumInList = 254;
+  
+  // activeNumInList = 254;
+  int local90Deg = 1000;
+  
   switch(cmdInput){
     case 1:
       if(ServoType[listID[activeNumInList]] == 9){
@@ -142,36 +145,54 @@ void activeCtrl(int cmdInput){
 
     case 20:
       if(ServoType[listID[activeNumInList]] == 9){
-        st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
+        // st.WritePosEx(listID[activeNumInList], -local90Deg, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(0, local90Deg, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(1, -local90Deg, activeServoSpeed, ServoInitACC_ST);
         // delay(3000); 
       }
       else if(ServoType[listID[activeNumInList]] == 5){
-        sc.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_SC);
+        sc.WritePosEx(listID[activeNumInList], -local90Deg, activeServoSpeed, ServoInitACC_SC);
         // delay(3000);
       }
       break;
 
     case 21:
       if(ServoType[listID[activeNumInList]] == 9){
-        st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);
+        // st.WritePosEx(listID[activeNumInList], local90Deg, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(0, -local90Deg, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(1, local90Deg, activeServoSpeed, ServoInitACC_ST);
         // delay(3000);
       }
       else if(ServoType[listID[activeNumInList]] == 5){
-        sc.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_SC);
+        sc.WritePosEx(listID[activeNumInList], local90Deg, activeServoSpeed, ServoInitACC_SC);
         // delay(3000);
       }
       break;
 
       case 22:
         if(ServoType[listID[activeNumInList]] == 9){
-          st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
-          st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);
+          st.WritePosEx(listID[activeNumInList], -local90Deg, activeServoSpeed, ServoInitACC_ST);
+          delay(1000);
+          st.WritePosEx(listID[activeNumInList], local90Deg, activeServoSpeed, ServoInitACC_ST);
         }
         else if(ServoType[listID[activeNumInList]] == 5){
-          st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
-          st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);         
+          st.WritePosEx(listID[activeNumInList], -local90Deg, activeServoSpeed, ServoInitACC_ST);
+          delay(3000);
+          st.WritePosEx(listID[activeNumInList], local90Deg, activeServoSpeed, ServoInitACC_ST);         
         }
         break;
+
+      // case 23:
+      //   if(ServoType[listID[activeNumInList]] == 9){
+      //   st.WritePosEx(0, 1, activeServoSpeed, ServoInitACC_ST);
+      //   st.WritePosEx(1, 1, activeServoSpeed, ServoInitACC_ST);
+      //   }
+      //   else if(ServoType[listID[activeNumInList]] == 5){
+      //     st.WritePosEx(listID[activeNumInList], -local90Deg, activeServoSpeed, ServoInitACC_ST);
+      //     delay(3000);
+      //     st.WritePosEx(listID[activeNumInList], local90Deg, activeServoSpeed, ServoInitACC_ST);         
+      //   }
+      //   break;
 
   }
 }
@@ -337,7 +358,10 @@ void OnDataRecv(const uint8_t* mac, const uint8_t* incomingData, int len) {
   if(myData.Spd_send < 50){
     myData.Spd_send = 200;
   }
-  st.WritePosEx(myData.ID_send, myData.POS_send, abs(myData.Spd_send), 0);
+
+  st.WritePosEx(0, myData.POS_send, abs(myData.Spd_send), 0);
+  st.WritePosEx(1, myData.POS_send, abs(myData.Spd_send), 0);
+
 
   Serial.printf("Bytes received: %d from %02X:%02X:%02X:%02X:%02X:%02X\n",
     len,
