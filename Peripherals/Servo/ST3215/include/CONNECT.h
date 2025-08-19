@@ -1,3 +1,19 @@
+/*
+
+OPIS DZIAŁANIA MODUŁU
+
+MODUŁ DZIAŁA SŁABO ALE POPRAWNIE:
+
+1. wartość zmiany położenia (int local90Deg) jest niedeterministyczna 
+1. przy sterowaniu pozycją +90Pos i -90Pos oba serwa się ruszają jeżeli na przemian wciskamy przyciski
+2. jeżeli pomiedzy wcisniemy +pos albo -pos to wtedy sterowanie dla dwóch już nie działa 
+
+Wniosek z ad. 1 -> należy przed testem zkalibrować wartość local90Deg tak, by rzeczywiście ramie obracało się o 90 stopni
+Wniosek z ad. 3 -> najpierw dokonujemy kalibracji pozycji ramion osobno tak, by uzyskać pozycję pionową, następnie odłączamy się od sterownika i potem przystępujemy do testów
+
+*/
+
+
 #pragma once
 
 // https://randomnerdtutorials.com/esp32-useful-wi-fi-functions-arduino/
