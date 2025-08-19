@@ -138,29 +138,49 @@ void activeCtrl(int cmdInput){
 
     case 17:DEV_ROLE = 0;break;
     case 18:DEV_ROLE = 1;break;
-    case 19:DEV_ROLE = 2;break;
+
+    case 19:
+      if(ServoType[listID[0]] == 9){
+        st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
+      }
+      else if(ServoType[listID[activeNumInList]] == 5){
+        sc.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_SC);
+        // delay(3000);
+      }
+      break;
 
     case 20:
       if(ServoType[listID[0]] == 9){
-        st.WritePosEx(listID[activeNumInList], -250, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
         // delay(3000); 
       }
       else if(ServoType[listID[activeNumInList]] == 5){
-        sc.WritePosEx(listID[activeNumInList], -250, activeServoSpeed, ServoInitACC_SC);
+        sc.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_SC);
         // delay(3000);
       }
       break;
 
     case 21:
       if(ServoType[listID[activeNumInList]] == 9){
-        st.WritePosEx(listID[activeNumInList], 250, activeServoSpeed, ServoInitACC_ST);
+        st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);
         // delay(3000);
       }
       else if(ServoType[listID[activeNumInList]] == 5){
-        sc.WritePosEx(listID[activeNumInList], 250, activeServoSpeed, ServoInitACC_SC);
+        sc.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_SC);
         // delay(3000);
       }
       break;
+
+      case 22:
+        if(ServoType[listID[activeNumInList]] == 9){
+          st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
+          st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);
+        }
+        else if(ServoType[listID[activeNumInList]] == 5){
+          st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
+          st.WritePosEx(254, 250, activeServoSpeed, ServoInitACC_ST);         
+        }
+        break;
 
   }
 }
