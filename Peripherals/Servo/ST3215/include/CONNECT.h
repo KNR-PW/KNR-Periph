@@ -63,6 +63,7 @@ void activeCtrl(int cmdInput){
   Serial.println(ServoType[listID[activeNumInList]]);
   Serial.println(ServoType[1]);
   Serial.println("---   ---   ---");
+  activeNumInList = 254;
   switch(cmdInput){
     case 1:
       if(ServoType[listID[activeNumInList]] == 9){
@@ -139,18 +140,8 @@ void activeCtrl(int cmdInput){
     case 17:DEV_ROLE = 0;break;
     case 18:DEV_ROLE = 1;break;
 
-    case 19:
-      if(ServoType[listID[0]] == 9){
-        st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
-      }
-      else if(ServoType[listID[activeNumInList]] == 5){
-        sc.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_SC);
-        // delay(3000);
-      }
-      break;
-
     case 20:
-      if(ServoType[listID[0]] == 9){
+      if(ServoType[listID[activeNumInList]] == 9){
         st.WritePosEx(254, -250, activeServoSpeed, ServoInitACC_ST);
         // delay(3000); 
       }
